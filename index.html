@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Tara's Tasks</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <h2 class="logo">Task Menu</h2>
+      <ul>
+        <li><a href="#" onclick="showSection('home')">🏠 Home</a></li>
+        <li><a href="#" onclick="showSection('addTask')">📝 Add Task</a></li>
+        <li><a href="taskLists.html">📋 Task List</a></li>
+        <li><a href="calendar.html">📅 Calendar</a></li>
+        <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <div class="welcome-header">
+        <h1 id="greeting">Hey Akshay 👋, how are you today?</h1>
+        <p class="subtext">Let’s get things done — one task at a time.</p>
+      </div>
+
+      <!-- Dynamic Content Area -->
+      <div id="content-area">
+        <!-- Default welcome section -->
+        <div id="home" class="section">
+          <div class="welcome-visual">
+            <div class="svg-container">
+              <!-- Simple embedded SVG for illustration -->
+              <svg width="100%" height="100%" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="800" height="600" fill="#e3f2fd"/>
+                <g>
+                  <circle cx="200" cy="200" r="80" fill="#64b5f6"/>
+                  <text x="160" y="210" fill="#fff" font-size="20px" font-family="Segoe UI">Tasks</text>
+                </g>
+                <g>
+                  <rect x="350" y="170" width="150" height="150" rx="20" fill="#4db6ac"/>
+                  <text x="380" y="250" fill="white" font-size="20px" font-family="Segoe UI">Calendar</text>
+                </g>
+                <g>
+                  <path d="M600 280 A60 60 0 1 1 599.9 280" fill="#f06292"/>
+                  <text x="570" y="344" fill="white" font-size="18px" font-family="Segoe UI">Timer</text>
+                </g>
+              </svg>
+            </div>
+            <div class="taglines">
+              <h2>Your Smart Productivity Hub</h2>
+              <p>Visualize your day. Track your tasks. Master your time.</p>
+              <ul>
+                <li>✅ Create time-bound tasks with live countdown</li>
+                <li>📅 Organize appointments in your interactive calendar</li>
+                <li>🎯 Boost focus and stay on track effortlessly</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Task section (initially hidden) -->
+        <div id="addTask" class="section" style="display:none;">
+          <h2>Add New Task</h2>
+          <div class="task-form">
+            <input type="text" id="title" placeholder="Task Title" />
+            <textarea id="description" placeholder="Task Description (Optional)"></textarea>
+            <input type="number" id="timeLimit" placeholder="Time Limit (in minutes)" />
+            <button onclick="addTask()">Add Task</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Toast Notification -->
+<div id="toast" class="toast">Task added successfully! ✅</div>
+
+  <script src="script.js"></script>
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+      document.getElementById(sectionId).style.display = 'block';
+    }
+    const name = localStorage.getItem('taskifyActiveUser');
+  if (name) {
+    document.getElementById('greeting').textContent = `Hey ${name} 👋, how are you today?`;
+  }
+  function logout() {
+    localStorage.removeItem('taskifyActiveUser');
+    window.location.href = 'task.html';
+  }
+  </script>
+</body>
+</html>

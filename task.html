@@ -1,0 +1,458 @@
+<html>
+    <head>
+      <title>Taskify</title>
+        <style>
+              body {
+                     margin: 0;
+                     font-family: Arial, sans-serif;
+                     background-color: #e6f4ff;
+                     position: relative;
+                     
+                   }
+
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 40px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        background-color: white; /* This keeps the top menu bar white */
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      .logo img {
+        height: 50px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 16px;
+      }
+
+          /* Hover effect */
+          .nav-button {
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #191919;
+            transition: color 0.2s ease;
+          }
+    
+          .nav-button:hover {
+            color: #3f80ff;
+          }
+    
+          .signup-button {
+            background-color: #3f80ff;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+          }
+          .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        padding: 16px 40px;
+        gap: 12px;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .mobile-menu.show {
+          display: flex;
+        }
+    }
+    
+    .hero-text {
+  padding: 60px 40px 40px;
+  background-color: #f8f9fa; /* Light background like TickTick */
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+  color: #191919;
+}
+
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 24px;
+    padding: 0 20px;
+  }
+}
+.subtext {
+  font-size: 18px;
+  margin-top: 12px;
+  color: #555;
+  text-align: center;
+}
+.get-started-container {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.get-started-button {
+  background-color: #3f80ff;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.get-started-button:hover {
+  background-color: #336ad3;
+}
+
+.image-section {
+  padding: 90px 180px;
+  display: flex;
+  justify-content: center;
+  background-color: #e6f4ff;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-pair {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative; /* no gap to make them look seamless */
+}
+
+.animated-image {
+  transition: transform 0.4s ease;
+  display: block;
+  border-radius: 12px; /* Rounded corners for both images */
+  border: 5px solid white; /* White border around the images */
+}
+
+.large-image {
+  width: 80%;
+  height: 100%; /* This image will be larger */
+  transform: scale(1.1);
+  position: relative; /* Slight zoom at the top */
+}
+
+.small-image {
+  width: 30%;
+  height: 80%;
+  position: absolute;
+  bottom: 0;
+  right: 0;/* Smaller size for the second image */
+  transform: scale(0.9); /* Slight zoom at the top */
+}
+
+.todo-section {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: transparent;
+}
+
+.todo-card {
+  background-color: rgb(248, 250, 249);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  max-width: 1000px;
+  width: 100%;
+  min-height:500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap:40px;
+}
+
+.todo-content {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: right;
+  justify-content: right;
+  flex-wrap: wrap;
+}
+
+.todo-description {
+    max-width: 40%; /* Control the width of the description */
+}
+
+.todo-description h2{
+    font-size:20px;
+    font-weight: 600;
+    color:#3f80ff
+
+}
+
+.todo-description h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: red;
+}
+
+.todo-description p {
+    font-size: 16px;
+    color: #666;
+    margin-top: 8px;
+}
+
+.task-list {
+    max-width: 400px;
+    width: 100%;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  border-radius: 10px;
+  width: 100%;
+  height: 300px;
+  background-color: white;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  position: relative;
+}
+.video-container video {
+    width: 100%;
+    height:100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius:10px;
+
+}
+
+.task-list {
+  max-width: 400px;
+  width: 100%;
+}
+
+.todo-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-list li {
+  font-size: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #444;
+}
+
+.todo-list input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #3f80ff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .todo-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+ 
+
+}
+
+
+        </style>
+    </head>
+   
+
+<body>
+        <header>
+        <div class="logo">
+            <img src="taskifylogo.png" alt="Taskify Logo" />
+          </div>
+    
+          <!-- Navigation Buttons -->
+          <nav class="nav-links">
+            <button class="nav-button"><a href="sign-in.html">Sign In</a></button>
+            <button class="signup-button"><a href="sign-up.html">Sign Up</a></button>
+          </nav>
+         
+          <!-- Hamburger Button -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      </header>
+
+      
+      <!-- Hidden Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" >
+      <button class="nav-button"><a href="sign-in.html">Sign In</a></button>
+      <button class="signup-button"><a href="sign-up.html">Sign Up</a></button>
+    </div>
+     
+      <section class="hero-text">
+        <h1>Stay Organized and Creative using Taskify.</h1>
+      </section>
+      <p class="subtext">Taskify helps you manage your day, your way.</p>
+      
+      
+      <div class="get-started-container">
+        <button class="get-started-button"><a href="sign-in.html">Get Started</a></button>
+      </div>
+
+      <section class="image-section">
+        <div class="image-pair">
+          <img src="header1.jpg"  alt="Taskify main screen" class="animated-image large-image" />
+          <img src="header2.jpg" alt="Taskify secondary screen" class="animated-image small-image"  />
+        </div>
+      </section>
+      
+      <section class="todo-section">
+        <div class="todo-card">
+          <div class="todo-content">
+            <!-- Video Part -->
+            <div class="video-container">
+              <video src="https://d107mjio2rjf74.cloudfront.net/sites/res/newHome/tick/features/card1.mp4" autoplay muted loop playsinline></video>
+            </div>
+
+             <!-- Left Side Description Part -->
+             <div class="todo-description">
+                <h2>Todo List</h2>
+                <h1>Organize everything in your life</h1>
+                <p>Whether it's work projects, personal tasks, or study plans, Taskify helps you organize and confidently tackle everything in your life.</p>
+            </div>
+      
+            <!-- To-Do List Part -->
+            <div class="task-list">
+              <h2 class="todo-title">Today's Tasks</h2>
+              <ul class="todo-list">
+                <li><input type="checkbox"> Finish UI for homepage</li>
+                <li><input type="checkbox"> Review meeting notes</li>
+                <li><input type="checkbox"> Update task statuses</li>
+                <li><input type="checkbox"> Plan tomorrow’s schedule</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="todo-section">
+        <div class="todo-card">
+          <div class="todo-content">
+            <!-- Video Part -->
+            <div class="video-container">
+              <video src="https://d107mjio2rjf74.cloudfront.net/sites/res/newHome/tick/features/card2.mp4" autoplay muted loop playsinline></video>
+            </div>
+
+    
+            <!-- Text Part -->
+            <div class="todo-description">
+              <h3>Calendar Views</h3>
+              <h1>Easily plan your schedule</h1>
+              <p>Different calendar views like monthly, weekly, daily, and agenda offer diverse choices for planning your time more efficiently.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+      <section class="todo-section">
+        <div class="todo-card">
+          <div class="todo-content">
+            <!-- Video Part -->
+            <div class="video-container">
+              <video src="https://d107mjio2rjf74.cloudfront.net/sites/res/newHome/tick/features/card3.mp4" autoplay muted loop playsinline></video>
+            </div>
+    
+            <!-- Text Part -->
+            <div class="todo-description">
+              <h3>Time Me</h3>
+              <h1>Track time and stay focused</h1>
+              <p>Adopt the popular "Pomodoro Technique"—break tasks into 25-minute intervals to stay focused and achieve a productive flow.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="todo-section">
+        <div class="todo-card">
+          <div class="todo-content">
+            <!-- Video Part -->
+            <div class="video-container">
+              <video src="https://d107mjio2rjf74.cloudfront.net/sites/res/newHome/tick/features/card4.mp4" autoplay muted loop playsinline></video>
+            </div>
+    
+            <!-- Text Part -->
+            <div class="todo-description">
+              <h3>Habit Tracker</h3>
+              <h1>Develop and maintain good habits</h1>
+              <p>A rich habit library, flexible tracking options, and thoughtful data review help you build good habits effortlessly and lead a fulfilling life.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      
+
+  
+      <script>
+        function toggleMenu() {
+           console.log("Toggle Menu Clicked");
+          const menu = document.getElementById('mobileMenu');
+          menu.classList.toggle('show');
+        }
+      </script>
+
+  <script>
+    const images = document.querySelectorAll('.animated-image');
+  
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const scale = Math.max(1, 1.1 - scrollY / 1000);
+      images.forEach((img) => {
+        img.style.transform = `scale(${scale})`;
+      });
+    });
+  </script>
+  
+</body>
+</html>
